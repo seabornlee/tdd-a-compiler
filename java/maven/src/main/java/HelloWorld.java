@@ -2,7 +2,13 @@
  * Created by twer on 3/28/14.
  */
 public class HelloWorld {
+    private Dependency dependency;
+
+    public HelloWorld(Dependency dependency) {
+
+        this.dependency = dependency;
+    }
     public String beenCalled() {
-        return "Leave me alone.";
+        return dependency.say();
     }
 }

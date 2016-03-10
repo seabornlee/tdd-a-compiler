@@ -12,9 +12,10 @@ public class HelloWorldTest {
     }
 
     @Test
-    public void should_be_mocked(){
-        HelloWorld helloWorld = mock(HelloWorld.class);
-        when(helloWorld.beenCalled()).thenReturn("Hello World");
+    public void should_be_mocked() {
+        Dependency dependency = mock(Dependency.class);
+        when(dependency.say()).thenReturn("Hello World");
+        HelloWorld helloWorld = new HelloWorld(dependency);
 
         assertThat(helloWorld.beenCalled()).isEqualTo("Hello World");
     }
