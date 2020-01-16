@@ -1,5 +1,7 @@
 package scanner;
 
+import static java.util.Arrays.asList;
+
 public class Token {
     private String name;
     private String value;
@@ -21,7 +23,7 @@ public class Token {
     }
 
     private boolean isSymbol(String word) {
-        return word.equals("=");
+        return asList("=", "+", "-", "*", "/", "%").contains(word);
     }
 
     private boolean isIdentifier(String word) {
