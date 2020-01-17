@@ -23,6 +23,7 @@ public class Token {
         if (isIdentifier(word)) {
             return new Token("id", word);
         }
+<<<<<<< HEAD
         
         return null;
     }
@@ -33,6 +34,10 @@ public class Token {
 
     public void setValue(String value) {
         this.value = value;
+=======
+
+        return null;
+>>>>>>> refactor: extract factory method
     }
 
     private static boolean isValue(String word) {
