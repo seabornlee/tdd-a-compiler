@@ -9,7 +9,7 @@ public class Scanner {
     public List<Token> scan(String source) {
         String[] words = source.split("\\s");
         return Arrays.stream(words)
-                .map(Token::new)
+                .map(Token::of)
                 .collect(toList());
     }
 }

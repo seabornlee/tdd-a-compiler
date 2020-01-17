@@ -6,27 +6,44 @@ public class Token {
     private String name;
     private String value;
 
-    public Token(String word) {
+    public Token(String name) {
+        this.name = name;
+    }
+
+    public Token(String name, String value) {
+        this.name = name;
+        this.value = value;
+    }
+
+    public static Token of(String word) {
         if (isSymbol(word) || isValue(word)) {
-            this.name = word;
-            return;
+            return new Token(word);
         }
 
         if (isIdentifier(word)) {
-            this.name = "id";
-            this.value = word;
+            return new Token("id", word);
         }
+        
+        return null;
     }
 
-    private boolean isValue(String word) {
+    private void setName(String name) {
+        this.name = name;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    private static boolean isValue(String word) {
         return word.matches("\\d+");
     }
 
-    private boolean isSymbol(String word) {
+    private static boolean isSymbol(String word) {
         return asList("=", "+", "-", "*", "/", "%").contains(word);
     }
 
-    private boolean isIdentifier(String word) {
+    private static boolean isIdentifier(String word) {
         return word.matches("\\w+");
     }
 
