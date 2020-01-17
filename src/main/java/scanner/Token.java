@@ -18,7 +18,7 @@ public class Token {
     }
 
     public static Token of(String word) {
-        if (isSymbol(word) || isValue(word)) {
+        if (isOperator(word) || isValue(word)) {
             return new Token(word);
         }
 
@@ -33,7 +33,7 @@ public class Token {
         return word.matches("\\d+");
     }
 
-    private static boolean isSymbol(String word) {
+    private static boolean isOperator(String word) {
         return asList("=", "+", "-", "*", "/", "%").contains(word);
     }
 
@@ -59,12 +59,24 @@ public class Token {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Token token = (Token) o;
-        return name.equals(token.name) &&
-                value.equals(token.value);
+        return Objects.equals(name, token.name) &&
+                Objects.equals(value, token.value);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name, value);
+    }
+
+    public boolean isIdentifier() {
+        return this.name.equals("id");
+    }
+
+    public boolean isOperator() {
+        return isOperator(this.name);
+    }
+
+    public boolean isValue() {
+        return isValue(this.name);
     }
 }

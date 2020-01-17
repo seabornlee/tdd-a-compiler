@@ -11,6 +11,8 @@ public class SyntaxTree {
         this.root = root;
     }
 
+    public SyntaxTree() {}
+
     public Token getRoot() {
         return root;
     }
@@ -27,7 +29,15 @@ public class SyntaxTree {
         this.left = new SyntaxTree(token);
     }
 
-    public void setRightChild(Token token) {
-        this.right = new SyntaxTree(token);
+    public SyntaxTree getRight() {
+        return right;
+    }
+
+    public void setRight(SyntaxTree right) {
+        this.right = right;
+    }
+
+    public void setRoot(Token token) {
+        this.root = token;
     }
 }
