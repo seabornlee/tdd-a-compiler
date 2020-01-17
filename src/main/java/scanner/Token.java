@@ -1,5 +1,6 @@
 package scanner;
 
+
 import java.util.Objects;
 
 import static java.util.Arrays.asList;
@@ -18,12 +19,16 @@ public class Token {
     }
 
     public static Token of(String word) {
-        if (isOperator(word) || isValue(word)) {
-            return new Token(word);
+        if (isOperator(word)) {
+            return new Operator(word);
+        }
+
+        if (isValue(word)) {
+            return new Value(word);
         }
 
         if (isIdentifier(word)) {
-            return new Token("id", word);
+            return new Identifier(word);
         }
 
         return null;
@@ -69,14 +74,14 @@ public class Token {
     }
 
     public boolean isIdentifier() {
-        return this.name.equals("id");
+        return this instanceof Identifier;
     }
 
     public boolean isOperator() {
-        return isOperator(this.name);
+        return this instanceof Operator;
     }
 
     public boolean isValue() {
-        return isValue(this.name);
+        return this instanceof Value;
     }
 }
