@@ -1,4 +1,8 @@
-package scanner;
+package scanner.detector;
+
+import scanner.TokenDetector;
+import scanner.token.OpenClause;
+import scanner.Token;
 
 import java.util.Arrays;
 

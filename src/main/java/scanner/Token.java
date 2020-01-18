@@ -1,6 +1,11 @@
 package scanner;
 
 
+import scanner.detector.*;
+import scanner.token.Identifier;
+import scanner.token.Operator;
+import scanner.token.Value;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

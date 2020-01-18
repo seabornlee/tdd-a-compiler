@@ -1,4 +1,8 @@
-package scanner;
+package scanner.detector;
+
+import scanner.TokenDetector;
+import scanner.token.ReverseWord;
+import scanner.Token;
 
 public class ReserveWordDetector implements TokenDetector {
     @Override

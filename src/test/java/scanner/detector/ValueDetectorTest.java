@@ -1,6 +1,7 @@
-package scanner;
+package scanner.detector;
 
 import org.junit.jupiter.api.Test;
+import scanner.detector.ValueDetector;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 

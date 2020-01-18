@@ -1,4 +1,6 @@
-package scanner;
+package scanner.token;
+
+import scanner.Token;
 
 public class Include extends Token {
     public Include(String header) {

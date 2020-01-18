@@ -1,4 +1,8 @@
-package scanner;
+package scanner.detector;
+
+import scanner.TokenDetector;
+import scanner.token.Identifier;
+import scanner.Token;
 
 public class IdentifierDetector implements TokenDetector {
     @Override

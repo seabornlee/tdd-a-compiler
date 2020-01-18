@@ -1,6 +1,10 @@
+package scanner;
+
 import org.junit.jupiter.api.Test;
-import scanner.*;
 import org.apache.commons.io.IOUtils;
+import scanner.Token;
+import scanner.Scanner;
+import scanner.token.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -33,7 +37,7 @@ public class ScannerTest {
     @Test
     void should_generate_tokens() throws IOException {
         String code = IOUtils.toString(
-                this.getClass().getResourceAsStream("sum.c"),
+                this.getClass().getResourceAsStream("/sum.c"),
                 UTF_8
         );
 

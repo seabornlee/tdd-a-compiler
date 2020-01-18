@@ -1,5 +1,7 @@
 package scanner;
 
+import scanner.Token;
+
 import java.util.ArrayList;
 import java.util.List;
 

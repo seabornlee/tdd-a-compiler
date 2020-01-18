@@ -1,8 +1,9 @@
-package scanner;
+package parser;
 
 import org.junit.jupiter.api.Test;
 import parser.Parser;
 import parser.SyntaxTree;
+import scanner.Token;
 
 import java.util.Arrays;
 import java.util.List;

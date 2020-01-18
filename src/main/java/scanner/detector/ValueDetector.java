@@ -1,4 +1,8 @@
-package scanner;
+package scanner.detector;
+
+import scanner.TokenDetector;
+import scanner.Token;
+import scanner.token.Value;
 
 public class ValueDetector implements TokenDetector {
     @Override
