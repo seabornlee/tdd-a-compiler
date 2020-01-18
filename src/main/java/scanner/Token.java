@@ -1,6 +1,7 @@
 package scanner;
 
 
+import java.util.Arrays;
 import java.util.Objects;
 
 import static java.util.Arrays.asList;
@@ -23,6 +24,22 @@ public class Token {
             return new Operator(word);
         }
 
+        if (isType(word)) {
+            return new Type(word);
+        }
+
+        if (isOpenClause(word)) {
+            return new OpenClause(word);
+        }
+
+        if (isSymbol(word)) {
+            return new Symbol(word);
+        }
+
+        if (isPointer(word)) {
+            return new Pointer(word.substring(0, word.length() - 1));
+        }
+
         if (isValue(word)) {
             return new Value(word);
         }
@@ -31,7 +48,31 @@ public class Token {
             return new Identifier(word);
         }
 
+        if (isInclude(word)) {
+            return new Include(word);
+        }
+
         return null;
+    }
+
+    private static boolean isPointer(String word) {
+        return word.endsWith("*");
+    }
+
+    private static boolean isSymbol(String word) {
+        return word.equals(",");
+    }
+
+    private static boolean isOpenClause(String word) {
+        return word.equals("(");
+    }
+
+    private static boolean isType(String word) {
+        return Arrays.asList("int", "char").contains(word);
+    }
+
+    private static boolean isInclude(String word) {
+        return word.startsWith("#include");
     }
 
     private static boolean isValue(String word) {
