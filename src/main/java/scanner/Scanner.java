@@ -17,17 +17,35 @@ public class Scanner {
     private List<String> process(String[] words) {
         List<String> elements = new ArrayList<>();
         for (String word : words) {
-            if (word.contains("(")) {
-                elements.add(word.substring(0, word.indexOf("(")));
-                elements.add("(");
-                elements.add(word.substring(word.indexOf("(") + 1));
-            } else if (word.contains(",")) {
-                elements.add(word.substring(0, word.indexOf(",")));
-                elements.add(",");
-            } else {
-                elements.add(word);
-            }
+            parse(elements, word);
         }
         return elements;
+    }
+
+    private void parse(List<String> elements, String word) {
+        if (word.trim().isEmpty()) {
+            return;
+        }
+
+        if (word.contains("(")) {
+            parse(elements, word.substring(0, word.indexOf("(")));
+            elements.add("(");
+            parse(elements, word.substring(word.indexOf("(") + 1));
+        } else if (word.contains(")")) {
+            parse(elements, word.substring(0, word.indexOf(")")));
+            elements.add(")");
+        } else if (word.contains(",")) {
+            elements.add(word.substring(0, word.indexOf(",")));
+            elements.add(",");
+        } else if (word.contains("[]")) {
+            elements.add(word.substring(0, word.indexOf("[")));
+            elements.add("[");
+            elements.add("]");
+        } else if (word.endsWith(";")) {
+            elements.add(word.substring(0, word.indexOf(";")));
+            elements.add(";");
+        } else {
+            elements.add(word);
+        }
     }
 }

@@ -1,9 +1,11 @@
 package scanner;
 
+import java.util.Arrays;
+
 public class SymbolDetector implements TokenDetector {
     @Override
     public boolean match(String word) {
-        return word.equals(",");
+        return Arrays.asList(",", ";").contains(word);
     }
 
     @Override

@@ -14,9 +14,11 @@ public class Token {
 
     public static Token of(String word) {
         List<TokenDetector> detectors = new ArrayList<>();
+        detectors.add(new ReserveWordDetector());
         detectors.add(new OperatorDetector());
         detectors.add(new TypeDetector());
         detectors.add(new OpenClauseDetector());
+        detectors.add(new CloseClauseDetector());
         detectors.add(new SymbolDetector());
         detectors.add(new PointerDetector());
         detectors.add(new ValueDetector());

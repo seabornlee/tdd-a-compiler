@@ -1,7 +1,7 @@
 package scanner;
 
 public class Symbol extends Token {
-    public Symbol(String name) {
-        super(",");
+    public Symbol(String value) {
+        super(value);
     }
 }
