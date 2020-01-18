@@ -6,15 +6,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Token {
-    private String name;
     private String value;
 
-    public Token(String name) {
-        this.name = name;
-    }
-
-    public Token(String name, String value) {
-        this.name = name;
+    public Token(String value) {
         this.value = value;
     }
 
@@ -36,21 +30,13 @@ public class Token {
 
     }
 
-    private static boolean isSymbol(String word) {
-        return word.equals(",");
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public String getValue() {
         return value;
     }
 
     @Override
     public String toString() {
-        return "<" + name + ", " + value + ">";
+        return "<" + value + ">";
     }
 
     @Override
@@ -58,13 +44,12 @@ public class Token {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Token token = (Token) o;
-        return Objects.equals(name, token.name) &&
-                Objects.equals(value, token.value);
+        return value.equals(token.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, value);
+        return Objects.hash(value);
     }
 
     public boolean isIdentifier() {

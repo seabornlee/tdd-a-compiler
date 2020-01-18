@@ -2,7 +2,6 @@ import org.junit.jupiter.api.Test;
 import scanner.*;
 import org.apache.commons.io.IOUtils;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -15,20 +14,20 @@ public class ScannerTest {
         String source = "position = initial + rate * 60";
         List<Token> tokens = new Scanner().scan(source);
         assertThat(tokens).hasSize(7);
-        assertThat(tokens.get(0).getName()).isEqualTo("id");
+        assertThat(tokens.get(0)).isInstanceOf(Identifier.class);
         assertThat(tokens.get(0).getValue()).isEqualTo("position");
-        assertThat(tokens.get(1).getName()).isEqualTo("=");
-        assertThat(tokens.get(1).getValue()).isNull();
-        assertThat(tokens.get(2).getName()).isEqualTo("id");
+        assertThat(tokens.get(1)).isInstanceOf(Operator.class);
+        assertThat(tokens.get(1).getValue()).isEqualTo("=");
+        assertThat(tokens.get(2)).isInstanceOf(Identifier.class);
         assertThat(tokens.get(2).getValue()).isEqualTo("initial");
-        assertThat(tokens.get(3).getName()).isEqualTo("+");
-        assertThat(tokens.get(3).getValue()).isNull();
-        assertThat(tokens.get(4).getName()).isEqualTo("id");
+        assertThat(tokens.get(3)).isInstanceOf(Operator.class);
+        assertThat(tokens.get(3).getValue()).isEqualTo("+");
+        assertThat(tokens.get(4)).isInstanceOf(Identifier.class);
         assertThat(tokens.get(4).getValue()).isEqualTo("rate");
-        assertThat(tokens.get(5).getName()).isEqualTo("*");
-        assertThat(tokens.get(5).getValue()).isNull();
-        assertThat(tokens.get(6).getName()).isEqualTo("60");
-        assertThat(tokens.get(6).getValue()).isNull();
+        assertThat(tokens.get(5)).isInstanceOf(Operator.class);
+        assertThat(tokens.get(5).getValue()).isEqualTo("*");
+        assertThat(tokens.get(6)).isInstanceOf(Value.class);
+        assertThat(tokens.get(6).getValue()).isEqualTo("60");
     }
 
     @Test

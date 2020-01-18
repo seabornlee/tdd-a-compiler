@@ -10,10 +10,10 @@ public class TokenTest {
 
     @Test
     public void should_generate_identifier_token() {
-        assertThat(Token.of("name").getName()).isEqualTo("id");
+        assertThat(Token.of("name")).isInstanceOf(Identifier.class);
         assertThat(Token.of("name").getValue()).isEqualTo("name");
 
-        assertThat(Token.of("argc").getName()).isEqualTo("id");
+        assertThat(Token.of("argc")).isInstanceOf(Identifier.class);
         assertThat(Token.of("argc").getValue()).isEqualTo("argc");
     }
 
@@ -22,15 +22,15 @@ public class TokenTest {
             "=", "+", "-", "*", "/", "%"
     })
     public void should_generate_operator_token(String word) {
-        Token count = Token.of(word);
-        assertThat(count.getName()).isEqualTo(word);
-        assertThat(count.getValue()).isNull();
+        Token token = Token.of(word);
+        assertThat(token).isInstanceOf(Operator.class);
+        assertThat(token.getValue()).isEqualTo(word);
     }
 
     @Test
     void should_generate_include_token() {
         Token token = Token.of("#include<stdio.h>");
-        assertThat(token.getName()).isEqualTo("include");
+        assertThat(token).isInstanceOf(Include.class);
         assertThat(token.getValue()).isEqualTo("stdio.h");
     }
 }
